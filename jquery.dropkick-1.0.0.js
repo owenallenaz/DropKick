@@ -56,6 +56,9 @@
       change : false
     },
 
+    // Truncate label after set chars
+    truncateSize = 15,
+
     // Make sure we only bind keydown on the document once
     keysBound = false
   ;
@@ -267,6 +270,9 @@
     $select = data.$select;
     $select.val(value);
 
+    if(label.length>truncateSize)
+      label = label.substring(0,truncateSize) + "…";
+      
     $dk.find('.dk_label').text(label);
 
     reset = reset || false;
