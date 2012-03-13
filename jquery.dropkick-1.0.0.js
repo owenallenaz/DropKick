@@ -186,6 +186,22 @@
       _updateFields($current, $dk, true);
     }
   };
+    // Reload options for selects and dropdowns in or lists array
+    methods.reload = function () {
+        var $select = $(this),
+            data = $select.data('dropkick');
+        settings = data.settings;
+
+
+        // remove created html
+        data.$dk.remove();
+        // de-initialize element
+        $select.data('dropkick', '');
+        // re-initialize element
+        $select.dropkick(settings);
+
+    };
+  
 
   // Expose the plugin
   $.fn.dropkick = function (method) {
